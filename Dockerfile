@@ -36,7 +36,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     rm -rf /var/lib/apt/lists/*
 
 COPY mopidy.conf /etc/mopidy/mopidy.conf
-COPY logging.conf /etc/mopidy/logging.conf
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
