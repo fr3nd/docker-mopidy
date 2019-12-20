@@ -51,4 +51,4 @@ VOLUME ["/var/lib/mopidy/local", "/var/lib/mopidy/local-images"]
 EXPOSE 6600 6680 1704 1705 5555/udp
 
 #ENTRYPOINT ["/usr/bin/dumb-init", "/entrypoint.sh"]
-CMD ["/usr/bin/mopidy"]
+CMD ["/usr/bin/mopidy", "--config", "/etc/mopidy/mopidy.conf"]
