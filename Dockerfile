@@ -20,9 +20,10 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
       python-pip \
     && \
     pip install \
+      Mopidy-API-Explorer==1.0.1 \
+      Mopidy-GMusic==3.0.0 \
       Mopidy-Iris==3.43.0 \
       Mopidy-Spotify-Web==0.3.0 \
-      Mopidy-GMusic==3.0.0 \
     && \
     apt-get purge --auto-remove -y \
       gcc \
