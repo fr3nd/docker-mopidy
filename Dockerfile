@@ -11,13 +11,13 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
       dumb-init \
       mopidy=${MOPIDY_VERSION} \
-      mopidy-local \
-      mopidy-mpd \
-      mopidy-scrobbler \
-      mopidy-somafm \
-      mopidy-soundcloud \
-      mopidy-tunein \
-      mopidy-spotify \
+      mopidy-local=3.0.0-1 \
+      mopidy-mpd=3.0.0-1 \
+      mopidy-scrobbler=2.0.0-1 \
+      mopidy-somafm=2.0.0~rc1-1 \
+      mopidy-soundcloud=3.0.0-1 \
+      mopidy-tunein=1.0.0-1 \
+      mopidy-spotify=3.1.0-0mopidy1 \
       python3-pip \
     && \
     pip3 install \
