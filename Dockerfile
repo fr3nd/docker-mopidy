@@ -11,12 +11,12 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
       dumb-init \
       mopidy=${MOPIDY_VERSION} \
-      mopidy-local-sqlite \
-      mopidy-scrobbler \
-      mopidy-somafm \
-      mopidy-soundcloud \
-      mopidy-tunein \
-      mopidy-spotify \
+      mopidy-local-sqlite=1.0.0-2 \
+      mopidy-scrobbler=1.2.1-1 \
+      mopidy-somafm=1.1.0-1 \
+      mopidy-soundcloud=2.1.0-1 \
+      mopidy-tunein=0.4.1-2 \
+      mopidy-spotify=3.1.0-0mopidy1 \
       python-pip \
     && \
     pip install \
