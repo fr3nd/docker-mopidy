@@ -1,6 +1,6 @@
 FROM debian:buster-slim
 
-ENV MOPIDY_VERSION 2.3.1-1
+ENV MOPIDY_VERSION 3.0.1-2
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
       gnupg2 \
@@ -11,19 +11,20 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
       dumb-init \
       mopidy=${MOPIDY_VERSION} \
-      mopidy-local-sqlite \
+      mopidy-local \
+      mopidy-mpd \
       mopidy-scrobbler \
       mopidy-somafm \
       mopidy-soundcloud \
       mopidy-tunein \
       mopidy-spotify \
-      python-pip \
+      python3-pip \
     && \
-    pip install \
-      Mopidy-API-Explorer==1.0.1 \
+    pip3 install \
       Mopidy-GMusic==3.0.0 \
-      Mopidy-Iris==3.43.0 \
-      Mopidy-Spotify-Web==0.3.0 \
+      #Mopidy-Iris==3.43.0 \ # Not compatible with Python3
+      Mopidy-Mobile==1.9.1 \
+      Mopidy-MusicBox-Webclient==2.6.0 \
     && \
     apt-get purge --auto-remove -y \
       gcc \
