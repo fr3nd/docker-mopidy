@@ -10,14 +10,15 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/buster.list && \
     apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
       dumb-init \
-      mopidy=${MOPIDY_VERSION} \
+      libspotify-dev \
+      libspotify12 \
       mopidy-local=3.0.0-1 \
       mopidy-mpd=3.0.0-1 \
       mopidy-scrobbler=2.0.0-1 \
       mopidy-somafm=2.0.0~rc1-1 \
       mopidy-soundcloud=3.0.0-1 \
       mopidy-tunein=1.0.0-1 \
-      mopidy-spotify=3.1.0-0mopidy1 \
+      mopidy=${MOPIDY_VERSION} \
       python3-pip \
     && \
     pip3 install \
@@ -25,6 +26,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
       #Mopidy-Iris==3.43.0 \ # Not compatible with Python3
       Mopidy-Mobile==1.9.1 \
       Mopidy-MusicBox-Webclient==2.6.0 \
+      Mopidy_Spotify==4.0.0 \
     && \
     apt-get purge --auto-remove -y \
       gcc \
