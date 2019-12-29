@@ -22,10 +22,10 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
       python3-pip \
     && \
     pip3 install \
-      Mopidy-GMusic==3.0.0 \
+      Mopidy-GMusic==4.0.0 \
       #Mopidy-Iris==3.43.0 \ # Not compatible with Python3
       Mopidy-Mobile==1.9.1 \
-      Mopidy-MusicBox-Webclient==2.6.0 \
+      Mopidy-MusicBox-Webclient==3.0.1 \
       Mopidy_Spotify==4.0.0 \
     && \
     apt-get purge --auto-remove -y \
