@@ -26,6 +26,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
       #Mopidy-Iris==3.43.0 \ # Not compatible with Python3
       Mopidy-Mobile==1.9.1 \
       Mopidy-MusicBox-Webclient==3.0.1 \
+      Mopidy-Party==1.0.0 \
       Mopidy_Spotify==4.0.0 \
     && \
     apt-get purge --auto-remove -y \
