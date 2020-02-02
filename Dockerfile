@@ -2,7 +2,7 @@ FROM debian:buster-slim
 
 ENV MOPIDY_VERSION 3.0.1-2
 ENV MOPIDY_LOCAL_VERSION 3.1.1-1
-ENV IRIS_VERSION 3.40.0
+ENV IRIS_VERSION 3.44.0
 
 WORKDIR /src
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -27,18 +27,12 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     && \
     pip3 install \
       Mopidy-GMusic==4.0.0 \
-      #Mopidy-Iris==3.43.0 \ # Not compatible with Python3
+      git+git://github.com/jaedb/Iris.git@${IRIS_VERSION}#egg=Mopidy-Iris \
       Mopidy-Mobile==1.9.1 \
       Mopidy-MusicBox-Webclient==3.0.1 \
       Mopidy-Party==1.0.0 \
-      Mopidy_Spotify==4.0.0 \
+      Mopidy_Spotify==4.0.1 \
     && \
-    git clone https://github.com/jaedb/Iris.git && \
-    cd Iris && \
-    git checkout $IRIS_VERSION && \
-    python3 setup.py develop && \
-    cd .. && \
-    rm -rf Iris && \
     apt-get purge --auto-remove -y \
       git \
       gcc \
