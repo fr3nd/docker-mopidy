@@ -1,8 +1,12 @@
 FROM debian:buster-slim
 
 ENV MOPIDY_VERSION 3.0.1-2
+ENV MOPIDY_LOCAL_VERSION 3.1.1-1
+ENV IRIS_VERSION 3.40.0
 
+WORKDIR /src
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+      git \
       gnupg2 \
       wget \
       && \
@@ -12,7 +16,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
       dumb-init \
       libspotify-dev \
       libspotify12 \
-      mopidy-local=3.0.0-1 \
+      mopidy-local=${MOPIDY_LOCAL_VERSION} \
       mopidy-mpd=3.0.0-1 \
       mopidy-scrobbler=2.0.0-1 \
       mopidy-somafm=2.0.0~rc1-1 \
@@ -29,7 +33,14 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
       Mopidy-Party==1.0.0 \
       Mopidy_Spotify==4.0.0 \
     && \
+    git clone https://github.com/jaedb/Iris.git && \
+    cd Iris && \
+    git checkout $IRIS_VERSION && \
+    python3 setup.py develop && \
+    cd .. && \
+    rm -rf Iris && \
     apt-get purge --auto-remove -y \
+      git \
       gcc \
       wget \
     && \
