@@ -2,7 +2,7 @@ FROM debian:buster-slim
 
 ENV MOPIDY_VERSION 3.0.1-2
 ENV MOPIDY_LOCAL_VERSION 3.1.1-1
-ENV IRIS_VERSION 3.44.0
+ENV IRIS_VERSION 3.44.3
 
 WORKDIR /src
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
