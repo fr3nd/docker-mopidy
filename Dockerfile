@@ -1,8 +1,18 @@
 FROM debian:buster-slim
 
-ENV MOPIDY_VERSION 3.0.1-2
+ENV MOPIDY_VERSION 3.0.2-1
 ENV MOPIDY_LOCAL_VERSION 3.1.1-1
-ENV IRIS_VERSION 3.44.3
+ENV MOPIDY_MPD 3.0.0-1
+ENV MOPIDY_SOMAFM 2.0.0-1
+ENV MOPIDY_SCROBBLER 2.0.0-1
+ENV MOPIDY_SOUNDCLOUD 3.0.0-1
+ENV MOPIDY_TUNEIN 1.0.0-1
+ENV MOPIDY_GMUSIC 4.0.0
+ENV MOPIDY_MOBILE 1.9.1
+ENV MOPIDY_MUSICBOX_WEBCLIENT 3.0.1
+ENV MOPIDY_PARTY 1.0.0
+ENV MOPIDY_SPOTIFY 4.0.1
+ENV IRIS_VERSION 3.50.0
 
 WORKDIR /src
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -17,21 +27,21 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
       libspotify-dev \
       libspotify12 \
       mopidy-local=${MOPIDY_LOCAL_VERSION} \
-      mopidy-mpd=3.0.0-1 \
-      mopidy-scrobbler=2.0.0-1 \
-      mopidy-somafm=2.0.0~rc1-1 \
-      mopidy-soundcloud=3.0.0-1 \
-      mopidy-tunein=1.0.0-1 \
+      mopidy-mpd=${MOPIDY_MPD} \
+      mopidy-scrobbler=${MOPIDY_SCROBBLER} \
+      mopidy-somafm=${MOPIDY_SOMAFM} \
+      mopidy-soundcloud=${MOPIDY_SOUNDCLOUD} \
+      mopidy-tunein=${MOPIDY_TUNEIN} \
       mopidy=${MOPIDY_VERSION} \
       python3-pip \
     && \
     pip3 install \
-      Mopidy-GMusic==4.0.0 \
+      Mopidy-GMusic==${MOPIDY_GMUSIC} \
       git+git://github.com/jaedb/Iris.git@${IRIS_VERSION}#egg=Mopidy-Iris \
-      Mopidy-Mobile==1.9.1 \
+      Mopidy-Mobile==${MOPIDY_MOBILE} \
       Mopidy-MusicBox-Webclient==3.0.1 \
-      Mopidy-Party==1.0.0 \
-      Mopidy_Spotify==4.0.1 \
+      Mopidy-Party==${MOPIDY_PARTY} \
+      Mopidy_Spotify==${MOPIDY_SPOTIFY} \
     && \
     apt-get purge --auto-remove -y \
       git \
